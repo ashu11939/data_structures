@@ -1,0 +1,91 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Heap",
+            "request": "launch",
+            "mainClass": "Trees.Heap",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch BinaryTree",
+            "request": "launch",
+            "mainClass": "Trees.BinaryTree",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch BinarySearchTree",
+            "request": "launch",
+            "mainClass": "Trees.BinarySearchTree",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch Diameter",
+            "request": "launch",
+            "mainClass": "Trees.Diameter",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch TreeNode",
+            "request": "launch",
+            "mainClass": "Trees.TreeNode",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch QuickStart",
+            "request": "launch",
+            "mainClass": "DataStructures.QuickStart",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch MissingNumber",
+            "request": "launch",
+            "mainClass": "MissingNumber",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch ArrayDuplicates",
+            "request": "launch",
+            "mainClass": "ArrayDuplicates",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch ArrayDuplicates",
+            "request": "launch",
+            "mainClass": "leetcode.ArrayDuplicates",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch MissingNumber",
+            "request": "launch",
+            "mainClass": "leetcode.MissingNumber",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution",
+            "request": "launch",
+            "mainClass": "leetcode.Solution",
+            "projectName": "coding_101e10bf"
+        }
+    ]
+}
