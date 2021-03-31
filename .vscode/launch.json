@@ -6,6 +6,62 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch bubblesort",
+            "request": "launch",
+            "mainClass": "Sorting.bubblesort",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch ShortestPath",
+            "request": "launch",
+            "mainClass": "Graphs.ShortestPath",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch TopologicalSort",
+            "request": "launch",
+            "mainClass": "Graphs.TopologicalSort",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution",
+            "request": "launch",
+            "mainClass": "Arrays.Solution",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch MissingNumber",
+            "request": "launch",
+            "mainClass": "Arrays.MissingNumber",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch ArrayDuplicates",
+            "request": "launch",
+            "mainClass": "Arrays.ArrayDuplicates",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch GraphList",
+            "request": "launch",
+            "mainClass": "Graphs.GraphList",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch Graph",
+            "request": "launch",
+            "mainClass": "Graphs.Graph",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
             "name": "Launch Heap",
             "request": "launch",
             "mainClass": "Trees.Heap",

@@ -3,7 +3,7 @@
  * There are no duplicates in the list. One of the integers is missing in the list.
  * Write an efficient code to find the missing integer.
  */
-
+package Arrays;
 public class MissingNumber {
     public static void main(String[] args) {
         int arr[] = { 1, 2, 3, 4, 6, 5, 8};
