@@ -1,6 +1,6 @@
 package Sorting;
 
-public class bubblesort {
+public class sortingAlgos {
 
     public static void main(String[] args) {
         System.out.println("Bubble Sort");
@@ -10,6 +10,12 @@ public class bubblesort {
         bubbleSort(arr2);
         int[] arr3 = {15,16,18,17,19,15,14,12,11,10};
         insertionSort(arr3);
+        int[] arr4 = {15,16,18,17,19,15,14,12,11,10};
+        quickSort(arr4, 0, 9);
+        for(int i = 0; i < arr4.length; i++) {
+            System.out.print(arr4[i] + " ");
+        }
+        System.out.println();
     }
 
     public static void bubbleSort(int[] arr) {
@@ -48,7 +54,6 @@ public class bubblesort {
         System.out.println();
     }
     
-
     public static void insertionSort(int[] a) {
 
         for(int i = 1; i < a.length; i++) { //This loop is the insertion loop
@@ -67,4 +72,36 @@ public class bubblesort {
         }
         System.out.println();
     }
+
+    public static void quickSort(int[] a, int l, int h) {
+
+        if(l < h) {
+            int p = partition(a, l, h);
+            quickSort(a, l, p-1);
+            quickSort(a, p+1, h);
+        }
+    }
+
+    public static int partition(int[] a, int start, int end) {
+        int pivot = a[end];
+        int pindex = start; //partition index
+        
+        for(int i = start; i < end; i++) {
+
+            if(a[i] <= pivot) {
+                int temp = a[i];
+                a[i] = a[pindex];
+                a[pindex] = temp;
+                pindex++;
+            }
+
+        }
+               
+        int temp = a[pindex];
+        a[pindex] = a[end];
+        a[end] = temp;
+        return pindex;
+    }
+
+
 }

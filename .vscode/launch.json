@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch sortingAlgos",
+            "request": "launch",
+            "mainClass": "Sorting.sortingAlgos",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
             "name": "Launch bubblesort",
             "request": "launch",
             "mainClass": "Sorting.bubblesort",
