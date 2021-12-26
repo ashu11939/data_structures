@@ -5,7 +5,7 @@ package Arrays;
 class ArrayDuplicates {
     public static void main(String[] args0) {
        
-        int arr[] = { 1, 6, 3, 1, 3, 6, 6 };
+        int arr[] = { 0, 6, 3, 3, 4, 6, 6, 7, 0 };
         printRepeating(arr, arr.length);
     }
 

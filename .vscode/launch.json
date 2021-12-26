@@ -6,6 +6,76 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ReadCustomerCsv",
+            "request": "launch",
+            "mainClass": "ReadCsv.ReadCustomerCsv",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch ReadCsvNASID",
+            "request": "launch",
+            "mainClass": "ReadCsv.ReadCsvNASID",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch ReadCsvID",
+            "request": "launch",
+            "mainClass": "ReadCsv.ReadCsvID",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch ReadCsvNAS",
+            "request": "launch",
+            "mainClass": "ReadCsv.ReadCsvNAS",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch ReadCsv2",
+            "request": "launch",
+            "mainClass": "ReadCsv.ReadCsv2",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch ReadCsv",
+            "request": "launch",
+            "mainClass": "ReadCsv.ReadCsv",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch StringsQ",
+            "request": "launch",
+            "mainClass": "Strings.StringsQ",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch LinkedList",
+            "request": "launch",
+            "mainClass": "LinkedList.LinkedList",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch NumberToWords",
+            "request": "launch",
+            "mainClass": "Arrays.NumberToWords",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
+            "name": "Launch StandardQuestions",
+            "request": "launch",
+            "mainClass": "Arrays.StandardQuestions",
+            "projectName": "coding_101e10bf"
+        },
+        {
+            "type": "java",
             "name": "Launch sortingAlgos",
             "request": "launch",
             "mainClass": "Sorting.sortingAlgos",

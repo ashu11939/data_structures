@@ -1,5 +1,7 @@
 package Trees;
 
+import java.util.HashSet;
+
 public class BinarySearchTree {
 
     static class BST{
@@ -30,6 +32,16 @@ public class BinarySearchTree {
         System.out.println("\nBST LCA(11, 13) : "+ LCA(root, 11, 13).data);
         System.out.println("\nisBST : "+ isBST(root));
         System.out.println("\nKth smallest 4 : "+ KthSmallest(root,4));
+        Kth c1 = new Kth();
+        c1.count = 0;
+        System.out.println("\nKth smallest2 4 : "+ KthSmallest2(root,c1, 4));
+        Kth c = new Kth();
+        c.count = 3;
+        System.out.println("\nKth largest 3 : "+ KthLargest(root,c));
+        HashSet<Integer> set = new HashSet<>();
+        System.out.println("\nPair with sum exists : " + FindPair(root, set, 23));
+
+        System.out.println("\nCheck BST : " + checkBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE));
     }
 
     static void Add(BST root, int x) {
@@ -120,4 +132,46 @@ public class BinarySearchTree {
       }
       return KthSmallest(root.right, k);
     } 
+
+    static int KthSmallest2(BST root, Kth k, int ck){
+        if (root == null) return 0;
+        int left = KthSmallest2(root.left, k, ck);
+        if (left != 0) return left;
+        k.count++; //It should be a pass by reference value
+        if (k.count == ck) return root.data;
+        return KthSmallest2(root.right, k, ck);
+    }
+
+    static int KthLargest(BST root, Kth k){
+        if (root == null) return 0;
+        int right = KthLargest(root.right, k);
+        if (right != 0) return right;
+        k.count --; //It should be a pass by reference value
+        if (k.count == 0) return root.data;
+        return KthLargest(root.left, k);
+    }
+
+    static boolean FindPair(BST root, HashSet<Integer> set, int sum) {
+        if (root == null) return false;
+
+        if (FindPair(root.left, set, sum)) return true;
+
+        if (set.contains(sum - root.data)) return true;
+        else {
+            set.add(root.data);
+        }
+
+        return FindPair(root.right, set, sum);
+    }
+
+    static boolean checkBST(BST root, int min, int max) {
+        if (root == null) return true;
+        if (root.data < min || root.data > max) return false;
+        return checkBST(root.left, min, root.data - 1) && checkBST(root.right, root.data + 1, max);
+    }
+
+}
+
+class Kth {
+    int count;
 }

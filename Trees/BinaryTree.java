@@ -42,6 +42,10 @@ public class BinaryTree {
         System.out.println("\n  `Height of the tree: "+ height);
         int diameter = diameter(root);
         System.out.println("\n  `Diameter of the tree: "+ diameter);
+
+        Pair ans = heightDiameter(root);
+        System.out.println("\n  `Height and Diameter of the tree: "+ ans.height + " " + ans.diameter);
+
         ArrayList<Integer> path = new ArrayList<Integer>();
         path(root, path, 0);
         System.out.println("\n  `Sum of the all tree nodes: "+ sum(root));
@@ -59,6 +63,14 @@ public class BinaryTree {
         System.out.println("\nLCA(2,4)="+ LCA.data);
         System.out.print("\nSpiral Traversal : ");
         spiralTraversal(root);
+
+        System.out.print("\nVertical Sum : ");
+        HashMap<Integer, Integer> map = new HashMap<>();
+        verticalSum(root, map, 0);
+        map.forEach((k,v) -> System.out.println("Key = "
+        + k + ", Value = " + v));
+
+        System.out.print("\nDistance between 2 nodes : " + distanceBtw2Nodes(root, 5, 15));
 
     }
 
@@ -169,7 +181,29 @@ public class BinaryTree {
         int leftD = diameter(root.left);
         int rightD = diameter(root.right);
 
-        return Math.max(leftH + rightH + 1, Math.max(leftD, rightD));
+        return Math.max(leftH + rightH, Math.max(leftD, rightD));
+    }
+
+    static Pair heightDiameter(TreeNode root) {
+        if(root == null) {
+            Pair out = new Pair();
+            out.height = 0;
+            out.diameter= 0;
+            return out;
+        }
+
+        Pair left = heightDiameter(root.left);
+        Pair right = heightDiameter(root.right);
+
+        int option1 = left.height + right.height;
+        int option2 = left.diameter;
+        int option3 = right.diameter;
+
+        Pair out = new Pair();
+        out.height = 1 + Math.max(left.height, right.height);
+        out.diameter = Math.max(option1, Math.max(option2, option3));
+        return out;
+
     }
 
     static void path(TreeNode root, ArrayList<Integer> pathArr, int index) {
@@ -223,11 +257,53 @@ public class BinaryTree {
         else return left;
     }
 
-    static HashMap<Integer, Integer> verticalSum(TreeNode root) {
-        return null;
+    static void verticalSum(TreeNode root, HashMap<Integer, Integer> map, int col) {
+        if(root == null) return;
+        if(map.containsKey(col)){
+            map.put(col, map.get(col) + root.data);
+        } else {
+            map.put(col, root.data);
+        }
+        verticalSum(root.left, map, col-1);
+        verticalSum(root.right, map, col+1);
     }
 
-    
+    static TreeNode head;
+    static TreeNode prev;
+    static void convertBTtoDLL(TreeNode root){
+
+        /**
+         * 1. convert the left child to left prev node
+         * 2. convert the right child to next node
+         */
+        if (root == null) return;
+        convertBTtoDLL(root.left);
+        if (prev == null) head = root;
+        if (prev != null) {
+            prev.right = root;
+            root.left = prev;
+        }
+        prev = root;
+        convertBTtoDLL(root.right);
+    }
+
+    static int distance(TreeNode root, int k, int level) {
+        if(root == null) return -1;
+        if(root.data == k) return level;
+        int left = distance(root.left, k, level + 1);
+        int right = distance(root.right, k, level + 1);
+
+        if(left != -1) return left;
+        else return right;
+    }
+    static int distanceBtw2Nodes(TreeNode root, int n1, int n2) {
+        TreeNode lca = LCA(root, n1, n2);
+        int d1 = distance(lca, n1, 0);
+        int d2 = distance(lca, n2, 0);
+        return d1 + d2;
+    }
+
+
     static TreeNode createBinaryTree() {
 
         TreeNode root = new TreeNode(1);
@@ -249,4 +325,7 @@ public class BinaryTree {
     }
 }
 
-
+class Pair {
+    int height;
+    int diameter;
+}
