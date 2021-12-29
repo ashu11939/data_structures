@@ -303,6 +303,54 @@ public class BinaryTree {
         return d1 + d2;
     }
 
+    static int findNodesAtKDistance(TreeNode root, TreeNode target, int k){
+
+        /**
+         * 1. find target
+         * 2. print all nodes at K below it 
+         * 3. explore each ancestor and print all nodes k distance below it
+         */
+
+        if(root == null) return -1;
+
+        if(root == target) {
+            printKNodesDownwards(root, k);
+            return 0;
+        }
+
+        int dl = findNodesAtKDistance(root.left, target, k);
+        if(dl != -1) {
+            if(dl + 1 == k) {
+                System.out.println(root.data);
+            } else {
+                printKNodesDownwards(root.right, k - dl - 2);
+            }
+            return dl + 1;
+        }
+
+        int dr = findNodesAtKDistance(root.right, target, k);
+        if(dr != -1) {
+            if(dr + 1 == k) {
+                System.out.println(root.data);
+            } else {
+                printKNodesDownwards(root.left, k - dr - 2);
+            }
+            return dr + 1;
+        }
+
+        return -1;
+    }
+
+    static void printKNodesDownwards(TreeNode root, int k) {
+        if(root == null || k < 0) return;
+        if(k == 0) System.out.println(root.data);
+        k--;
+        printKNodesDownwards(root.left, k);
+        printKNodesDownwards(root.right, k);
+    }
+
+
+
 
     static TreeNode createBinaryTree() {
 

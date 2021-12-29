@@ -2,6 +2,7 @@ package Graphs;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Graph {
 
@@ -88,6 +89,43 @@ public class Graph {
         return false;
     }
 
+    //Cycle in a Directed graph
+    static boolean isDirectedGraphCyclic(Node graph) {
+
+        COLOR[] color = new COLOR[graph.v+1];
+        for(int i = 1; i <= graph.v; i++){
+            color[i] = COLOR.WHITE;
+        }
+
+        for(int i = 1; i <= graph.v; i++) {
+            if(color[i] == COLOR.WHITE){
+                if(isDirectedGraphCyclicUtil(graph, i, color)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    static boolean isDirectedGraphCyclicUtil(Node g, int u, COLOR[] color){
+        color[u] = COLOR.GRAY;
+        for(int i = 1; i <= g.v; i++){
+            if(g.adj[u][i] == 1) {
+
+                if(color[i] == COLOR.GRAY){
+                    return true;
+                }
+
+                if(color[i] == COLOR.WHITE && isDirectedGraphCyclicUtil(g, i, color)){
+                    return true;
+                }
+            }
+        }
+        color[u] = COLOR.BLACK;
+        return false;
+    }
+
     static int countIslands(int[][] M) {
         int r = M.length;
         int c = M[0].length;
@@ -131,6 +169,32 @@ public class Graph {
             //i+1,j-1
             DFSIslands(M, v, i+1, j-1);
         }
+    }
+
+    static void topologicalSort(Node g) {
+
+        boolean[] vis = new boolean[g.v+1];
+        Stack<Integer> s = new Stack<Integer>();
+
+        for(int i = 1; i <= g.v; i++) {
+            if(!vis[i]) {
+                topologicalSortUtil(g, vis, s, i);
+            }
+        }
+
+        while(!s.empty()){
+            System.out.println(s.pop());
+        }
+    }
+
+    static void topologicalSortUtil(Node g, boolean[] vis, Stack<Integer> s, int u) {
+        vis[u] = true;
+        for(int i = 1; i <= g.v; i++) {
+            if(!vis[i] && g.adj[u][i] == 1){
+                topologicalSortUtil(g, vis, s, i);
+            }
+        }
+        s.push(u);
     }
 
     public static void main(String[] args0) {
@@ -184,6 +248,32 @@ public class Graph {
         
         System.out.println("****** isCyclic ******" + isCyclic(graph));
         System.out.println("****** isCyclic ******" + isCyclic(ncgraph));
-        
+
+        Node dcgraph = new Node(6, 6);
+        dcgraph.adj[1][2] = 1;
+        dcgraph.adj[2][3] = 1;
+        dcgraph.adj[1][3] = 1;
+        dcgraph.adj[1][4] = 1;
+        dcgraph.adj[4][5] = 1;
+        dcgraph.adj[5][6] = 1;
+        dcgraph.adj[6][4] = 1;
+               
+        System.out.println("****** isDirectedCyclic ******" + isDirectedGraphCyclic(dcgraph));
+        System.out.println("****** isDirectedCyclic ******" + isDirectedGraphCyclic(ncgraph));
+
+        Node topoGraph = new Node(7, 7);
+        topoGraph.adj[1][3] = 1;
+        topoGraph.adj[2][3] = 1;
+        topoGraph.adj[3][4] = 1;
+        topoGraph.adj[2][5] = 1;
+        topoGraph.adj[4][6] = 1;
+        topoGraph.adj[5][6] = 1;
+        topoGraph.adj[6][7] = 1;
+        System.out.println("****** topologicalSort ******");
+        topologicalSort(topoGraph);
     }
+}
+
+enum COLOR {
+    WHITE, GRAY, BLACK
 }

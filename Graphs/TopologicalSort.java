@@ -50,8 +50,7 @@ public class TopologicalSort {
 
         int[] indegree = new int[g.v + 1];
         indegree(g, indegree);
-
-        
+     
 
         Queue<Integer> q = new LinkedList<>();
         for(int i = 1; i <= g.v; i++){
